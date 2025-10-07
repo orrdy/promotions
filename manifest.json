@@ -14,13 +14,13 @@
   ],
    "screenshots": [
         {
-            "src": "./snapshot-desktop.png",
+            "src": "/snapshot-desktop.png",
             "sizes": "1490x849",
             "type": "image/png",
             "form_factor": "wide"
         },
         {
-            "src": "./snapshot-mobile.png",
+            "src": "/snapshot-mobile.png",
             "sizes": "1490x849",
             "type": "image/png",
           "form_factor": "narrow"

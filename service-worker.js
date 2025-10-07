@@ -2,10 +2,10 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open('my-cache01').then(cache => {
       return cache.addAll([
-        'promotions/index.html',
-        'promotions/icon.png',
-        'promotions/snapshot-mobile.png',
-        'promotions/snapshot-desktop.png'
+        '/index.html',
+        '/icon.png',
+        '/snapshot-mobile.png',
+        '/snapshot-desktop.png'
       ]);
     })
   );

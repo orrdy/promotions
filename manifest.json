@@ -1,6 +1,6 @@
 {
-  "name": "Sales Data",
-  "short_name": "Sales Data",
+  "name": "Promotions Data",
+  "short_name": "Promotions Data",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#fce7d2",

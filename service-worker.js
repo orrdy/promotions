@@ -1,6 +1,6 @@
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('my-cache').then(cache => {
+    caches.open('my-cache01').then(cache => {
       return cache.addAll([
         '/index.html',
         '/icon.png',

@@ -1,0 +1,29 @@
+{
+  "name": "Sales Data",
+  "short_name": "Sales Data",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#fce7d2",
+  "theme_color": "#fce7d2",
+  "icons": [
+    {
+      "src": "./icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+   "screenshots": [
+        {
+            "src": "./screenshot-desktop.png",
+            "sizes": "883x877",
+            "type": "image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src": "./screenshots-mobile.png",
+            "sizes": "883x877",
+            "type": "image/png",
+          "form_factor": "narrow"
+        }
+    ]
+}

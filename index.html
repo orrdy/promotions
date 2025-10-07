@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!-- dont keep cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <!-- icon -->
+    <link rel="icon" href="./icon.png" type="image/x-icon" />
+    <link rel="manifest" href="./manifest.json">
+    <title>รายงานเข้าพบลูกค้าอู่ซ่อม</title>
+    
+<style>
+   body {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+         background-color: #fce7d2;
+        }
+
+  iframe {
+      width: 100%;
+      height: 100%;
+      border: none
+
+  }
+</style>
+</head>
+<body>
+      <header>
+        <nav class="navbar" style="background-color: #fce7d2;">
+            <div class="container-fluid">
+                <img width="30" height="30" src="./icon.png"/>
+                <button class="btn btn-sm btn-dark dark d-none" id="install-btn"><i
+                        class="bi bi-file-arrow-down-fill"></i>
+                    Install</button>
+            </div>
+        </nav>
+    </header>
+    <iframe allow="geolocation" src="https://script.google.com/macros/s/AKfycbxkJRFh9qpjULcTZzyJ9X5DrPXYRZdlrZx8Rf5uN44qRERv9orqnJiWMd_2NfX0T3U/exec" frameborder="0"></iframe>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            showInstallPromotion();
+            console.log('beforeinstallprompt fired');
+        });
+
+        function showInstallPromotion() {
+            $('#install-btn').removeClass('d-none').on('click', () => {
+                Swal.fire({
+                    title: 'ติดตั้งแอพลิเคชั่น',
+                    iconHtml: '<img src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/58/external-install-basic-ui-elements-2.3-sbts2018-outline-color-sbts2018.png" width="58" />',
+                    customClass: {
+                        icon: 'border-0'
+                    },
+                    text: 'คุณสามารถติดตั้งแอพบนมือถือของคุณเพื่อใช้งานได้ดีขึ้น',
+                    showCancelButton: true,
+                    confirmButtonText: 'ติดตั้ง',
+                    cancelButtonText: 'ยกเลิก',
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        deferredPrompt.prompt();
+                        // Wait for the user to respond to the prompt
+                        deferredPrompt.userChoice.then((choiceResult) => {
+                            if (choiceResult.outcome === 'accepted') {
+                                console.log('User accepted the A2HS prompt');
+                            } else {
+                                console.log('User dismissed the A2HS prompt');
+                            }
+                            deferredPrompt = null;
+                        });
+                    }
+                })
+            });
+
+
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
+  

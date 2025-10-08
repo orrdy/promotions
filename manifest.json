@@ -1,15 +1,19 @@
 {
   "name": "Promotions Data",
   "short_name": "Promotions Data",
-  "start_url": "/index.html",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#fce7d2",
   "theme_color": "#fce7d2",
+  "categories": ["business", "utilities"],
   "icons": [
     {
       "src": "./icon.png",
       "sizes": "96x96",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
    "screenshots": [
